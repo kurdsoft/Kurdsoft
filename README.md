@@ -14,3 +14,18 @@ Here are some ideas to get you started:
 - 😄 Pronouns: ...
 - ⚡ Fun fact: ...
 -->
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>KurdSoft</title>
+    <style>
+        body { font-family: 'Arial', sans-serif; background-color: #0f1b1c; color: white; text-align: center; padding: 50px; }
+        h1 { color: #d8a857; }
+    </style>
+</head>
+<body>
+    <h1>خێرهاتن بۆ KurdSoft</h1>
+    <p>ئەڤە وێبسیتێ مە یێ فەرمی یە.</p>
+</body>
+</html>
