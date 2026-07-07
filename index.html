@@ -2,34 +2,60 @@
 <html lang="ku" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>KurdSoft</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KurdSoft - Digital Innovation</title>
     <style>
-        body { font-family: sans-serif; background-color: #0f1b1c; color: #fff; text-align: center; padding: 20px; }
-        .lang-btn { cursor: pointer; color: #d8a857; margin: 0 10px; font-weight: bold; }
+        :root { --gold: #d8a857; --dark: #0f1b1c; --card: #162628; }
+        body { font-family: 'Segoe UI', sans-serif; background-color: var(--dark); color: #fff; margin: 0; padding: 0; text-align: center; }
+        .nav { padding: 20px; background: #1c2e30; border-bottom: 2px solid var(--gold); }
+        .lang-btn { cursor: pointer; color: var(--gold); margin: 0 10px; font-weight: bold; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 5px; }
+        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px; }
+        .card { background-color: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); width: 280px; transition: 0.3s; }
+        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(216, 168, 87, 0.2); }
+        .btn { display: block; background-color: var(--gold); color: #000; padding: 12px; margin-top: 20px; text-decoration: none; border-radius: 10px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <!-- زمان -->
-    <div class="lang-bar">
-        <span class="lang-btn" onclick="changeLang('ku')">کوردی</span> | 
-        <span class="lang-btn" onclick="changeLang('ar')">العربية</span> | 
-        <span class="lang-btn" onclick="changeLang('en')">English</span>
+
+    <div class="nav">
+        <h1 id="title">KurdSoft</h1>
+        <div class="lang-bar">
+            <span class="lang-btn" onclick="setLang('ku')">کوردی</span>
+            <span class="lang-btn" onclick="setLang('ar')">العربية</span>
+            <span class="lang-btn" onclick="setLang('en')">English</span>
+        </div>
     </div>
 
-    <!-- نڤیسینێن کو دێ گوهۆڕن -->
-    <h1 id="title">KurdSoft</h1>
-    <p id="desc">باشترین اشتراکان ل بەر دەستن</p>
+    <div class="container">
+        <div class="card">
+            <h3 id="card1-title">اشتراکێ زێڕین</h3>
+            <p id="card1-desc">خزمەتێن تایبەت ب کوالیتیا بلند</p>
+            <p><strong>25$</strong></p>
+            <a href="https://wa.me/9647500000000" class="btn" id="btn1">کریین ل واتسئاپێ</a>
+        </div>
+        <div class="card">
+            <h3 id="card2-title">اشتراکێ بێ یاسایی</h3>
+            <p id="card2-desc">خزمەتێن ب بهایێ کێم</p>
+            <p><strong>10$</strong></p>
+            <a href="https://wa.me/9647500000000" class="btn" id="btn2">کریین ل واتسئاپێ</a>
+        </div>
+    </div>
 
     <script>
-        const content = {
-            ku: { title: "KurdSoft", desc: "باشترین اشتراکان ل بەر دەستن" },
-            ar: { title: "KurdSoft", desc: "أفضل الاشتراکات لدیینا" },
-            en: { title: "KurdSoft", desc: "Best subscriptions available" }
+        const data = {
+            ku: { title: "KurdSoft", c1t: "اشتراکێ زێڕین", c1d: "خزمەتێن تایبەت ب کوالیتیا بلند", c2t: "اشتراکێ بێ یاسایی", c2d: "خزمەتێن ب بهایێ کێم", btn: "کریین ل واتسئاپێ" },
+            ar: { title: "KurdSoft", c1t: "الاشتراک الذهبي", c1d: "خدمات خاصة بجودة عالیة", c2t: "الاشتراک العادي", c2d: "خدمات بأسعار مناسبة", btn: "شراء عبر واتساب" },
+            en: { title: "KurdSoft", c1t: "Gold Subscription", c1d: "Premium services high quality", c2t: "Standard Subscription", c2d: "Affordable services", btn: "Buy via WhatsApp" }
         };
 
-        function changeLang(lang) {
-            document.getElementById('title').innerText = content[lang].title;
-            document.getElementById('desc').innerText = content[lang].desc;
+        function setLang(lang) {
+            document.getElementById('title').innerText = data[lang].title;
+            document.getElementById('card1-title').innerText = data[lang].c1t;
+            document.getElementById('card1-desc').innerText = data[lang].c1d;
+            document.getElementById('card2-title').innerText = data[lang].c2t;
+            document.getElementById('card2-desc').innerText = data[lang].c2d;
+            document.getElementById('btn1').innerText = data[lang].btn;
+            document.getElementById('btn2').innerText = data[lang].btn;
             document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
         }
     </script>
