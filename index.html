@@ -2,62 +2,54 @@
 <html lang="ku" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KurdSoft - Digital Innovation</title>
+    <title>KurdSoft - Store</title>
     <style>
-        :root { --gold: #d8a857; --dark: #0f1b1c; --card: #162628; }
-        body { font-family: 'Segoe UI', sans-serif; background-color: var(--dark); color: #fff; margin: 0; padding: 0; text-align: center; }
-        .nav { padding: 20px; background: #1c2e30; border-bottom: 2px solid var(--gold); }
-        .lang-btn { cursor: pointer; color: var(--gold); margin: 0 10px; font-weight: bold; border: 1px solid var(--gold); padding: 5px 10px; border-radius: 5px; }
-        .container { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; padding: 40px; }
-        .card { background-color: var(--card); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); width: 280px; transition: 0.3s; }
-        .card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(216, 168, 87, 0.2); }
-        .btn { display: block; background-color: var(--gold); color: #000; padding: 12px; margin-top: 20px; text-decoration: none; border-radius: 10px; font-weight: bold; }
+        :root { --bg: #f4f4f9; --text: #333; --gold: #d8a857; }
+        body.dark-mode { --bg: #0f1b1c; --text: #fff; }
+        body { background-color: var(--bg); color: var(--text); font-family: sans-serif; transition: 0.5s; }
+        .nav { padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+        .container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; padding: 20px; }
+        .card { background: #1c2e30; color: #fff; padding: 20px; border-radius: 15px; border: 2px solid var(--gold); }
+        .product-img { width: 100%; height: 200px; border-radius: 10px; object-fit: cover; }
+        .btn { display: block; background: var(--gold); padding: 10px; text-align: center; color: #000; text-decoration: none; border-radius: 5px; margin-top: 10px; }
+        .social { margin-top: 20px; text-align: center; }
+        .social a { margin: 0 10px; color: var(--gold); font-size: 20px; text-decoration: none; }
     </style>
 </head>
 <body>
-
     <div class="nav">
-        <h1 id="title">KurdSoft</h1>
-        <div class="lang-bar">
-            <span class="lang-btn" onclick="setLang('ku')">کوردی</span>
-            <span class="lang-btn" onclick="setLang('ar')">العربية</span>
-            <span class="lang-btn" onclick="setLang('en')">English</span>
-        </div>
+        <h1>KurdSoft</h1>
+        <button onclick="document.body.classList.toggle('dark-mode')">شەڤ/ڕۆژ</button>
     </div>
 
-    <div class="container">
-        <div class="card">
-            <h3 id="card1-title">اشتراکێ زێڕین</h3>
-            <p id="card1-desc">خزمەتێن تایبەت ب کوالیتیا بلند</p>
-            <p><strong>25$</strong></p>
-            <a href="https://wa.me/9647500000000" class="btn" id="btn1">کریین ل واتسئاپێ</a>
-        </div>
-        <div class="card">
-            <h3 id="card2-title">اشتراکێ بێ یاسایی</h3>
-            <p id="card2-desc">خزمەتێن ب بهایێ کێم</p>
-            <p><strong>10$</strong></p>
-            <a href="https://wa.me/9647500000000" class="btn" id="btn2">کریین ل واتسئاپێ</a>
-        </div>
+    <div class="container" id="product-list">
+        <!-- ل ڤێرێ بەرهەم دهێنە زێدەکرن -->
+    </div>
+
+    <div class="social">
+        <a href="https://facebook.com/yourpage">Facebook</a>
+        <a href="https://instagram.com/yourpage">Instagram</a>
+        <a href="https://wa.me/yournumber">WhatsApp</a>
+        <a href="https://tiktok.com/@yourpage">TikTok</a>
     </div>
 
     <script>
-        const data = {
-            ku: { title: "KurdSoft", c1t: "اشتراکێ زێڕین", c1d: "خزمەتێن تایبەت ب کوالیتیا بلند", c2t: "اشتراکێ بێ یاسایی", c2d: "خزمەتێن ب بهایێ کێم", btn: "کریین ل واتسئاپێ" },
-            ar: { title: "KurdSoft", c1t: "الاشتراک الذهبي", c1d: "خدمات خاصة بجودة عالیة", c2t: "الاشتراک العادي", c2d: "خدمات بأسعار مناسبة", btn: "شراء عبر واتساب" },
-            en: { title: "KurdSoft", c1t: "Gold Subscription", c1d: "Premium services high quality", c2t: "Standard Subscription", c2d: "Affordable services", btn: "Buy via WhatsApp" }
-        };
+        // هارىڤان: تو تەنێ ڤى بژى دێ زێدە کەی بۆ ئادمینی!
+        const products = [
+            { name: "بەرنامێ ئێکێ", price: "25$", desc: "وەسفا بەرنامەی ل ڤێرێ", img: "app1.jpg" },
+            { name: "بەرنامێ دووێ", price: "10$", desc: "وەسفا بەرنامەی ل ڤێرێ", img: "app2.jpg" }
+        ];
 
-        function setLang(lang) {
-            document.getElementById('title').innerText = data[lang].title;
-            document.getElementById('card1-title').innerText = data[lang].c1t;
-            document.getElementById('card1-desc').innerText = data[lang].c1d;
-            document.getElementById('card2-title').innerText = data[lang].c2t;
-            document.getElementById('card2-desc').innerText = data[lang].c2d;
-            document.getElementById('btn1').innerText = data[lang].btn;
-            document.getElementById('btn2').innerText = data[lang].btn;
-            document.documentElement.dir = (lang === 'en') ? 'ltr' : 'rtl';
-        }
+        const list = document.getElementById('product-list');
+        products.forEach(p => {
+            list.innerHTML += `<div class="card">
+                <img src="${p.img}" class="product-img">
+                <h3>${p.name}</h3>
+                <p>${p.desc}</p>
+                <p><strong>${p.price}</strong></p>
+                <a href="#" class="btn">کریین</a>
+            </div>`;
+        });
     </script>
 </body>
 </html>
